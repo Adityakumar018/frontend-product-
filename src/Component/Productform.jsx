@@ -28,16 +28,25 @@ export default function Productform() {
     formData.append("product_category", product.product_category);
     formData.append("product_image", product.product_image);
 
-    fetch("https://backend-product-xj3b.onrender.com/product", {
-      method: "POST",
-      body: formData
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        alert("Product Added Successfully!");
-        console.log(data);
-      })
-      .catch((err) => console.error(err));
+   fetch("https://backend-product-xj3b.onrender.com/product", {
+  method: "POST",
+  body: formData
+})
+  .then(async (res) => {
+    const text = await res.text();
+    console.log("Raw response:", text);
+
+    if (!text) {
+      throw new Error("Empty response from server");
+    }
+
+    return JSON.parse(text);
+  })
+  .then((data) => {
+    alert("Product Added Successfully!");
+    console.log(data);
+  })
+  .catch((err) => console.error(err));
   };
 
   return (
