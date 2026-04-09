@@ -28,7 +28,7 @@ export default function Productform() {
     formData.append("product_category", product.product_category);
     formData.append("product_image", product.product_image);
 
-    fetch("https:/backend-product-xj3b.onrender.com/product", {
+    fetch("https://backend-product-xj3b.onrender.com/product", {
       method: "POST",
       body: formData
     })
