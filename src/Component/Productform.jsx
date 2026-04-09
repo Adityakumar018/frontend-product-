@@ -32,12 +32,12 @@ export default function Productform() {
       method: "POST",
       body: formData
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         alert("Product Added Successfully!");
         console.log(data);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
 
   return (
